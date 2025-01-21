@@ -1,0 +1,92 @@
+[
+    {
+        "position": { "lat": 25.056784, "lng": 121.492376 },
+        "imgSrc": "./images/map/landmark-red.svg",
+        "title": "綠野博物館"
+    },
+    {
+        "position": { "lat": 25.024652, "lng": 121.523789 },
+        "imgSrc": "./images/map/landmark-green.svg",
+        "title": "星空公園"
+    },
+    {
+        "position": { "lat": 25.069321, "lng": 121.532146 },
+        "imgSrc": "./images/map/landmark-green.svg",
+        "title": "湖光餐廳"
+    },
+    {
+        "position": { "lat": 25.034917, "lng": 121.468253 },
+        "imgSrc": "./images/map/landmark-red.svg",
+        "title": "未來展覽館"
+    },
+    {
+        "position": { "lat": 25.072135, "lng": 121.556412 },
+        "imgSrc": "./images/map/landmark-green.svg",
+        "title": "城市花園"
+    },
+    {
+        "position": { "lat": 25.045123, "lng": 121.491234 },
+        "imgSrc": "./images/map/landmark-red.svg",
+        "title": "晨光博物館"
+    },
+    {
+        "position": { "lat": 25.070456, "lng": 121.467890 },
+        "imgSrc": "./images/map/landmark-green.svg",
+        "title": "綠洲公園"
+    },
+    {
+        "position": { "lat": 25.052789, "lng": 121.532101 },
+        "imgSrc": "./images/map/landmark-green.svg",
+        "title": "山巒餐廳"
+    },
+    {
+        "position": { "lat": 25.038765, "lng": 121.548321 },
+        "imgSrc": "./images/map/landmark-red.svg",
+        "title": "文化展覽館"
+    },
+    {
+        "position": { "lat": 25.068234, "lng": 121.554789 },
+        "imgSrc": "./images/map/landmark-green.svg",
+        "title": "童話花園"
+    },
+    {
+        "position": { "lat": 25.023456, "lng": 121.500987 },
+        "imgSrc": "./images/map/landmark-green.svg",
+        "title": "河畔咖啡廳"
+    },
+    {
+        "position": { "lat": 25.060987, "lng": 121.481234 },
+        "imgSrc": "./images/map/landmark-red.svg",
+        "title": "科技博物館"
+    },
+    {
+        "position": { "lat": 25.031234, "lng": 121.521678 },
+        "imgSrc": "./images/map/landmark-green.svg",
+        "title": "花草森林公園"
+    },
+    {
+        "position": { "lat": 25.054321, "lng": 121.469876 },
+        "imgSrc": "./images/map/landmark-green.svg",
+        "title": "藍天餐廳"
+    },
+    {
+        "position": { "lat": 25.077654, "lng": 121.505432 },
+        "imgSrc": "./images/map/landmark-red.svg",
+        "title": "風景博物館"
+    },
+    {
+        "position": { "lat": 25.042827, "lng": 121.524863 },
+        "imgSrc": "./images/map/landmark-red.svg",
+        "title": "麵屋雲山"
+    },
+    {
+        "position": { "lat": 25.044756, "lng": 121.515822 },
+        "imgSrc": "./images/map/landmark-green.svg",
+        "title": "小豬拉麵"
+    },
+    {
+        "position": { "lat": 25.038252, "lng": 121.536847 },
+        "imgSrc": "./images/map/landmark-green.svg",
+        "title": "拉麵"
+    }
+]

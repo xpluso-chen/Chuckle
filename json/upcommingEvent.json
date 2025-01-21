@@ -1,0 +1,74 @@
+[
+    {
+        "href": "#",
+        "src": "./images/news/manga.webp",
+        "alt": "漫畫圖片",
+        "date": "2024/9/15~2024/10/15",
+        "title": "驚悚異想漫畫主題展",
+        "tags": [
+            "台北"
+        ]
+    },
+    {
+        "href": "#",
+        "src": "./images/news/stone.webp",
+        "alt": "文物圖片",
+        "date": "2024/9/31~2024/12/31",
+        "title": "時代的記憶：出土文物展",
+        "tags": [
+            "台北",
+            "假日限定"
+        ]
+    },
+    {
+        "href": "#",
+        "src": "./images/news/ai.webp",
+        "alt": "機器人照片",
+        "date": "2025/1/1~2025/3/1",
+        "title": "AI誕生的秘辛",
+        "tags": [
+            "台南"
+        ]
+    },
+    {
+        "href": "#",
+        "src": "./images/news/under-the-sea.webp",
+        "alt": "海底照片",
+        "date": "2025/2/1~2025/3/26",
+        "title": "水下10公里 : 人類無法居住的世界揭密",
+        "tags": [
+            "台北",
+            "假日限定"
+        ]
+    },
+    {
+        "href": "#",
+        "src": "./images/news/piano.webp",
+        "alt": "鋼琴照片",
+        "date": "2025/2/28~2025/4/28",
+        "title": "時代鋼琴展 :白鍵與黑鍵的交織",
+        "tags": [
+            "台中"
+        ]
+    },
+    {
+        "href": "#",
+        "src": "./images/news/van-gogh.webp",
+        "alt": "圖畫",
+        "date": "2025/3/1~2025/5/1",
+        "title": "梵谷畫展",
+        "tags": [
+            "高雄"
+        ]
+    },
+    {
+        "href": "#",
+        "src": "./images/news/kitchen.webp",
+        "alt": "廚房裝潢",
+        "date": "2025/3/23~2025/6/23",
+        "title": "廚房裝潢設計特展",
+        "tags": [
+            "新竹"
+        ]
+    }
+]

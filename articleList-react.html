@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="./css/nav-footer-general.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/postFiter.css">
+    <link rel="stylesheet" href="./css/style-xpluso.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 跟元素的地方 -->
+    <div id="root"></div>
+    <!--JSX -->
+    <script type="text/babel">
+
+        function FilterBtn() {
+            return (
+                <div className="filter-btn">
+                    <img className="filter-icon" src="./images/articleList/filter.svg" alt="三角形下拉按鈕" />
+                </div>
+            );
+        }
+
+        function Container(props) {
+            return (
+                <label className="container">{props.title}
+                    <input type="checkbox" />
+                    <span className="checkmark"></span>
+                </label>
+            );
+        }
+
+        function ImgDivider() {
+            return <img src="./images/article/divider.png" alt="分隔線" />;
+        }
+
+        function ListTextArea(props) {
+            return (
+                <a href={props.article}>
+                    <article className="list">
+
+                        <div className="listTextArea">
+                            <h2>{props.title}</h2>
+                            <p className="postTime">{props.time}</p>
+                            <p>{props.content}</p>
+                        </div>
+                        <div className="cover">
+                            <img src={props.imgUrl} alt="文章封面" />
+                        </div>
+
+                    </article>
+                </a>
+            );
+        }
+
+        function ADListTextArea(props) {
+            return (
+                <a href={props.article}>
+                    <article className="list">
+
+                        <div className="listTextArea">
+                            <div id="title">
+                                <div id="AD">
+                                    <h4>AD</h4>
+                                </div>
+                                <h2>{props.title}</h2>
+                            </div>
+                            <br />
+                            <p>{props.content}</p>
+                        </div>
+                        <div className="cover">
+                            <img src={props.imgUrl} alt="文章封面" />
+                        </div>
+
+                    </article>
+                </a>
+            );
+        }
+
+        function Tag(props) {
+            return <div className="tag">{props.title}</div>;
+        }
+
+        const { useState } = React;
+
+        function App() {
+            const [isContainerVisible, setContainerVisible] = useState(false);
+            const handleTitleClick = () => {
+                setContainerVisible(!isContainerVisible);
+            };
+
+            const [isTypeVisible, setTypeVisible] = useState(true); //類型
+            const handleTypeClick = () => {
+                setTypeVisible(!isTypeVisible); // 切換 inOder-1 的可見性
+            };
+
+            return (
+                <>
+                    <main id="articleListBody">
+                        <div id="post-filter">
+                            <div className='filter'>
+                                {/* 地點 */}
+                                <div id="type-title1" className="filter-title-Area" onClick={handleTitleClick}>
+                                    <legend className="filter-title">地點顯示</legend>
+                                    <FilterBtn />
+                                </div>
+
+                                {isContainerVisible && (
+                                    <ul id="container-body" className="Classification">
+                                        <li>
+                                            <div id="container0" className="filter-order-Area" >
+                                                <Container title='台北市' />
+                                                <FilterBtn />
+                                            </div>
+                                            <div id="inOder0">
+                                                <ul className="inOder">
+                                                    <li>
+                                                        <Container title='中正區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='大同區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='松山區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='大安區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='萬華區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='中山區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='信義區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='士林區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='北投區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='內湖區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='南港區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='文山區' />
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+
+                                        {/* 其他縣市線寫死，待改為json */}
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='新北市' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='桃園市' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='新竹縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='新竹市' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='苗栗縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='台中市' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='彰化縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='南投縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='雲林縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='嘉義縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='台南市' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='高雄市' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='屏東縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                )}
+
+
+
+                                <div id="type-title2" className="filter-title-Area" onClick={handleTypeClick}>
+                                    <legend className="filter-title">類型</legend>
+                                    <FilterBtn />
+                                </div>
+                                {isTypeVisible && (
+                                    <ul id="type-body" className="Classification">
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='戶外運動' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='文藝活動' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='室內景點' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='寵物友善' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='親子' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='飲料店' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='餐廳' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='快閃店' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='展覽' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='市集' />
+                                            </li>
+                                        </div>
+                                    </ul>
+                                )}
+                            </div>
+                        </div>
+
+                        <section id="listBody">
+                            <div id="hotFilter" className="tagsArea">
+                                <Tag title="熱門" />
+                                <Tag title="最新" />
+                            </div>
+
+                            <div id="listTag" className="tagsArea">
+                                <Tag title="#咖啡廳" />
+                                <Tag title="#隱藏版" />
+                                <Tag title="#逛街" />
+                                <Tag title="#中山" />
+                                <Tag title="#拍貼機" />
+                            </div>
+
+                            <ListTextArea title='🐱 貓奴必看：台灣的隱藏版貓咪公園' article="./article.html" time="2024/9/18 22:22" content="愛貓人士看過來！今天我們要帶大家探訪台灣最可愛的七大貓咪景點，每個地方都充滿貓咪的魅力，絕對讓你和貓咪度過無比美好的時光！準備好你的相機和毛茸茸的心情，讓我們開始這場奇幻的貓咪之旅吧！1. 泰樂園:走進園區，就像進入了貓咪的奇幻世界。這裡有貓咪主題咖啡廳，你可以邊喝咖啡邊享受貓咪的陪伴；還有可愛的貓咪迷宮👍讓你和貓咪一起探險；最吸引人的是貓咪跳台，看著貓咪們在空中靈活跳躍，真是樂趣無窮。無論是貓奴還是貓咪，都能在這裡找到快樂！" imgUrl="./images/articleList/list01.jpg" />
+                            <ImgDivider />
+                            <ListTextArea title='夜市美食大變身：三款創意料理帶你玩轉味蕾！' article="./article.html" time="2024/9/18 15:30" content="你以為夜市的美食就那幾樣🧋？吃來吃去都是一成不變的口味？那你可得改變一下想法了！這次，我們要挑戰你的味蕾，帶你嘗試三種前所未有的創意料理，讓你驚呼「這也可以😶！」。想像一下，臭豆腐變身為香辣豆腐丸子，鹹酥雞化身為香酥雞肉卷，還有那誘人的蚵仔煎，竟然成了香濃的蚵仔奶酪！是不是聽起來就讓人口水直流？快來一起挑戰夜市美食的新鮮吃法，給你的味蕾一次全新的冒險吧！" imgUrl="./images/articleList/list02.jpg" />
+                            <ImgDivider />
+                            <ADListTextArea title='露營新手🏕️必備清單！讓你的初次露營體驗完美無缺！' article="./article.html" content="OUTOUTDER 提供多樣化的帳篷、舒適的睡袋、耐用的露營椅和各式戶外配件，無論你是露營新手還是老手，這裡都能找到適合你的高品質露營用品。從設置帳篷到點燃營火，我們都替你考慮到了。讓你在享受大自然的同時，也能擁有最舒適的露營體驗，每一步都能讓你感受到家一樣的體驗，讓你盡情享受露營的樂趣。想要讓這次體驗完美無缺，那就一定不能少了這些必備清單，直接讓你省下慌亂準備的時間" imgUrl="./images/articleList/list-AD.jpg" />
+                            <ImgDivider />
+                            <ListTextArea title='探索台灣的隱秘桃花源：發現國外風情的秘境⁉️' article="./article.html" time="2024/9/19 9:30" content="遠離都市的喧囂，來一場心靈的深呼吸，發現台灣隱藏的絕美景點吧！你知道嗎？在台灣的某些角落，竟然有宛如歐洲田園般的景緻和日本靜謐庭園的美景。這些隱藏版的風光，不僅美得令人驚艷，更讓人感受到心靈的寧靜。無論是充滿田園風情的鄉村小路，還是綠意盎然的靜謐庭院，每一處都是一幅美麗的畫卷，等著你去發掘。快跟我們一起走進這些令人心醉的景點，讓心靈也能放個假，享受大自然的美好。" imgUrl="./images/articleList/list03.jpg" />
+                            <ImgDivider />
+                            <ListTextArea title='台南牛肉湯大對決🫵你是哪一派？' article="./article.html" time="2024/9/17 18:30" content="來台南就是要喝牛肉湯的啦!別小看這簡單的肉和湯的組合，背後可是有著豐富的學問。牛肉要新鮮自不在話下，但湯頭才是決定味道的關鍵。台南的牛肉湯種類繁多，有中藥湯底的滋補養生，有蔬果湯底的清爽甘甜，有牛骨湯底的濃郁醇厚，還有薑絲清湯的辛香提味。每一種湯底都有其獨特的風味和魅力，這次我們就來一場台南牛肉湯大對決，看看你是哪一派的忠實粉絲！快來找出你的最愛，一起品味這道經典美食吧！" imgUrl="./images/articleList/list04.jpg" />
+
+                            <a id="moreArea">
+                                <div id="more">看更多</div>
+                            </a>
+
+
+                        </section>
+                    </main>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+    <script src="./js/navbar.js"></script>
+    <script src="./js/footer.js"></script>
+    <script src="./js/postFilter.js"></script>
+</body>
+
+</html>

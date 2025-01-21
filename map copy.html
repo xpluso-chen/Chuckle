@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地圖搜尋</title>
+    <link rel="stylesheet" href="./css/style-amy.css">
+    <link rel="stylesheet" href="./css/nav-footer-general.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/mapList.css">
+    
+</head>
+
+<body id="map-body">
+
+    <header id="map-nev">
+        <!-- LOGO和搜尋欄在的地方 -->
+        <div id="map-nevleft">
+            <a href="./index.html"><img id="mapIcon" src="./images/map/logo_bg.svg" alt="黃版LOGO"></a>
+            <form class="search-container">
+                <input type="text" id="search-bar" placeholder="想去哪玩？">
+                <a href="#" class="search-icon"><img src="./images/search/search-icon.png" alt="搜尋"></a>
+                <!-- 熱門關鍵字欄 -->
+                <div id="keywords-container" class="hidden">
+                    <ul>
+                        <li><a href="#">1台北101</a></li>
+                        <li><a href="#">2夜市美食</a></li>
+                        <li><a href="#">3滷味推薦</a></li>
+                        <li><a href="#">4貓咪咖啡廳</a></li>
+                    </ul>
+                </div>
+            </form>
+
+            <a class="tag nev-things" href="#">市集</a>
+            <a class="tag nev-things" href="#">展覽</a>
+            <a class="tag nev-things" href="#">快閃店</a>
+            <a class="tag nev-things" href="#">餐廳</a>
+            <a class="tag nev-things" href="#">飲料店</a>
+        </div>
+    </header>
+
+
+
+    <!-- 文章 -->
+    <!-- <div id="list" class="list slide-out" style="opacity: 0;">
+
+        <div id="attraction-introduction">
+            <div id="close" onclick="Close(this)"><img src="./images/map/close-btn.svg" alt=""></div>
+            <div class="storeBio">
+                <h2>山巒餐廳</h2>
+                <p>營業時間:星期一至星期日 11:00 AM-21:00 PM</p>
+                <p>地址:台北市松山區山巒街88號2樓</p>
+            </div>
+        </div>
+
+        <div id="attraction-article">
+            
+
+
+            <article class="addressPosts">
+                
+                <div class="posts-title">
+                    <h3>絕美山巒風景佐美食</h3>
+                    <div class="posts-btn">
+
+                        <img src="./images/Eye-new-noframe.svg" alt="觀看數" id="seeMap">
+                        <h5>566</h5>
+
+                        <img src="./images/collect-new-noframe.svg" alt="收藏" class="collect">
+                        <img src="./images/share-new-noframe.svg" alt="分享" class="share">
+                    </div>
+                </div>
+                <hr>
+                <p class="posts-content">
+                    以迷人的自然景觀和精緻料理為特色，讓您在山林間享受大地的恩賜。無論是好友聚會還是浪漫約會，這裡的每一刻都充滿了難忘的滋味。
+                </p>
+                
+            </article>
+
+            <article class="addressPosts">
+
+                <div class="posts-title">
+                    <h3>品味自然的饗宴</h3>
+                    <div class="posts-btn">
+
+                        <img src="./images/Eye-new-noframe.svg" alt="觀看數" id="seeMap">
+                        <h5>566</h5>
+
+                        <img src="./images/collect-new-noframe.svg" alt="收藏" class="collect">
+                        <img src="./images/share-new-noframe.svg" alt="分享" class="share">
+                    </div>
+                </div>
+                <hr>
+                <p class="posts-content">
+                    隱身於山巒中的餐廳，讓您在享受大自然美景的同時，品嚐以當地食材精心烹調的美食，遠離塵囂，盡享靜謐與美味。
+                </p>
+
+            </article>
+
+            <article class="addressPosts" id="popup">
+
+                <div class="posts-title">
+                    <h3>美食與自然的完美結合</h3>
+                    <div class="posts-btn">
+
+                        <img src="./images/Eye-new-noframe.svg" alt="觀看數" id="seeMap">
+                        <h5>566</h5>
+
+                        <img src="./images/collect-new-noframe.svg" alt="收藏" class="collect">
+                        <img src="./images/share-new-noframe.svg" alt="分享" class="share">
+                    </div>
+                </div>
+                <hr>
+                <p class="posts-content">
+                    坐落在山中的山巒餐廳，提供無與倫比的用餐體驗，從新鮮的食材到優美的環境，每一個細節都經過精心設計，帶來最純粹的享受。
+                </p>
+
+            </article>
+
+            <article class="addressPosts">
+                <div class="posts-title">
+                    <h3>享受山巒中的絕佳料理</h3>
+                    <div class="posts-btn">
+
+                        <img src="./images/Eye-new-noframe.svg" alt="觀看數" id="seeMap">
+                        <h5>566</h5>
+
+                        <img src="./images/collect-new-noframe.svg" alt="收藏" class="collect">
+                        <img src="./images/share-new-noframe.svg" alt="分享" class="share">
+                    </div>
+                </div>
+                <hr>
+                <p class="posts-content">
+                    在山巒餐廳，您不僅能夠品嚐到地道的台灣美食，還能在大自然的懷抱中放鬆心情，這是一場讓五感愉悅的饗宴。
+                </p>
+            </article>
+
+            <article class="addressPosts">
+
+                <div class="posts-title">
+                    <h3>逃離城市的美味之旅</h3>
+                    <div class="posts-btn">
+
+                        <img src="./images/Eye-new-noframe.svg" alt="觀看數" id="seeMap">
+                        <h5>566</h5>
+
+                        <img src="./images/collect-new-noframe.svg" alt="收藏" class="collect">
+                        <img src="./images/share-new-noframe.svg" alt="分享" class="share">
+                    </div>
+                </div>
+                <hr>
+                <p class="posts-content">
+                    遠離城市喧囂，來到山巒餐廳。這裡的每道料理都散發著自然的香氣，在清新空氣中細細品味，您將會愛上這裡的獨特魅力。
+                </p>
+
+            </article>
+
+            <article class="addressPosts">
+
+                <div class="posts-title">
+                    <h3>自然與美食的雙重享受</h3>
+                    <div class="posts-btn">
+
+                        <img src="./images/Eye-new-noframe.svg" alt="觀看數" id="seeMap">
+                        <h5>566</h5>
+
+                        <img src="./images/collect-new-noframe.svg" alt="收藏" class="collect">
+                        <img src="./images/share-new-noframe.svg" alt="分享" class="share">
+                    </div>
+                </div>
+                <hr>
+                <p class="posts-content">
+                    隱秘於山間的山巒餐廳，以天然食材與迷人景色為特色，無論是美味的料理還是放鬆的環境，都讓您流連忘返。
+                </p>
+
+            </article>
+
+            <article class="addressPosts">
+
+                <div class="posts-title">
+                    <h3>台灣山林間的隱藏美味-山巒餐廳</h3>
+                    <div class="posts-btn">
+
+                        <img src="./images/Eye-new-noframe.svg" alt="觀看數" id="seeMap">
+                        <h5>566</h5>
+
+                        <img src="./images/collect-new-noframe.svg" alt="收藏" class="collect">
+                        <img src="./images/share-new-noframe.svg" alt="分享" class="share">
+                    </div>
+                </div>
+                <hr>
+                <p class="posts-content">
+                    讓您在山林間享用美味的台灣料理，這裡的菜色和環境都令人讚嘆，是尋求平靜與美味的最佳去處。
+                </p>
+
+            </article>
+
+            <div class="lest"></div>
+            
+
+
+
+        </div>
+
+    </div> -->
+
+    <!-- 地圖 -->
+    <!-- <div id="map" class="map-listout" data-json-path="./json/map.json">
+
+    </div>
+
+    <div class="popup-content">
+        <span id="close-btn">&times;</span>
+        <iframe id="outPage" src="./news-article-map.html" width="100%" height="100%" title="內嵌頁面"></iframe>
+    </div> -->
+
+
+
+    <!-- <script>(g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+            ({ key: "AIzaSyBnV_x0SwoErXaHcDSIh84eI1y4YRj0sYY", v: "weekly" });</script>
+    <script src="./js/initMap.js"></script> -->
+    <script src="./js/map.js"></script>
+
+ 
+
+</body>
+
+</html>

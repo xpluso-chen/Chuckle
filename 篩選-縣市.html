@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="./css/nav-footer-general.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/postFiter.css">
+    <link rel="stylesheet" href="./css/style-xpluso.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 跟元素的地方 -->
+    <div id="root"></div>
+    <!--JSX -->
+    <script type="text/babel">
+
+        function FilterBtn() {
+            return (
+                <div className="filter-btn">
+                    <img className="filter-icon" src="./images/articleList/filter.svg" alt="三角形下拉按鈕" />
+                </div>
+            );
+        }
+
+        function Container(props) {
+            return (
+                <label className="container">{props.title}
+                    <input type="checkbox" />
+                    <span className="checkmark"></span>
+                </label>
+            );
+        }
+
+
+        const { useState } = React;
+
+        // 定義一個異步函數來獲取JSON數據
+        (async () => {
+            try {
+                // 獲取CityCountyData.json的數據
+                const response = await axios.get('./CityCountyData.json');
+                const cityData = response.data;
+        function App() {
+            const [isContainerVisible, setContainerVisible] = useState(false);
+            const handleTitleClick = () => {
+                setContainerVisible(!isContainerVisible);
+            };
+
+            const [isTypeVisible, setTypeVisible] = useState(true); //類型
+            const handleTypeClick = () => {
+                setTypeVisible(!isTypeVisible); // 切換 inOder-1 的可見性
+            };
+
+            return (
+                <>
+                    <main id="articleListBody">
+                        <div id="post-filter">
+                            <div className='filter'>
+                                {/* 地點 */}
+                                <div id="type-title1" className="filter-title-Area" onClick={handleTitleClick}>
+                                    <legend className="filter-title">地點顯示</legend>
+                                    <FilterBtn />
+                                </div>
+
+                                {isContainerVisible && (
+                                    <ul id="container-body" className="Classification">
+                                        <li>
+                                            <div id="container0" className="filter-order-Area" >
+                                                <Container title='台北市' />
+                                                <FilterBtn />
+                                            </div>
+                                            <div id="inOder0">
+                                                <ul className="inOder">
+                                                    <li>
+                                                        <Container title='中正區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='大同區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='松山區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='大安區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='萬華區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='中山區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='信義區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='士林區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='北投區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='內湖區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='南港區' />
+                                                    </li>
+                                                    <li>
+                                                        <Container title='文山區' />
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+
+                                        {/* 其他縣市線寫死，待改為json */}
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='新北市' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='桃園市' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='新竹縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='新竹市' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='苗栗縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='台中市' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='彰化縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='南投縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='雲林縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='嘉義縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='台南市' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='高雄市' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div id="container-1" className="filter-order-Area" >
+                                                <Container title='屏東縣' />
+                                                <FilterBtn />
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                )}
+
+
+
+                                <div id="type-title2" className="filter-title-Area" onClick={handleTypeClick}>
+                                    <legend className="filter-title">類型</legend>
+                                    <FilterBtn />
+                                </div>
+                                {isTypeVisible && (
+                                    <ul id="type-body" className="Classification">
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='戶外運動' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='文藝活動' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='室內景點' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='寵物友善' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='親子' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='飲料店' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='餐廳' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='快閃店' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='展覽' />
+                                            </li>
+                                        </div>
+                                        <div className="filter-order-Area">
+                                            <li>
+                                                <Container title='市集' />
+                                            </li>
+                                        </div>
+                                    </ul>
+                                )}
+                            </div>
+                        </div>
+
+                        <section id="listBody">
+                            <div id="hotFilter" className="tagsArea">
+                                <Tag title="熱門" />
+                                <Tag title="最新" />
+                            </div>
+
+                            <div id="listTag" className="tagsArea">
+                                <Tag title="#咖啡廳" />
+                                <Tag title="#隱藏版" />
+                                <Tag title="#逛街" />
+                                <Tag title="#中山" />
+                                <Tag title="#拍貼機" />
+                            </div>
+
+                          
+
+                        </section>
+                    </main>
+                </>
+            );
+        }
+
+         // 渲染React組件到根元素
+         ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+            } catch (error) {
+                console.error('Error fetching the data:', error);
+            }
+        })();
+    </script>
+    <script src="./js/navbar.js"></script>
+    <script src="./js/footer.js"></script>
+    <script src="./js/postFilter.js"></script>
+</body>
+
+</html>

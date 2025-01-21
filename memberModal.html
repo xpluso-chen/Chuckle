@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員登入註冊</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/nav-footer-general.css">
+    <link rel="stylesheet" href="./css/style-amy.css">
+</head>
+
+<body>
+    <section id="member-modal">
+        <div class="radio-container">
+            <input id="radio-login" name="chlid-selected" type="radio" value="登入" checked>
+            <label for="radio-login">登入</label>
+
+            <input id="radio-signup" name="chlid-selected" type="radio" value="註冊">
+            <label for="radio-signup">註冊</label>
+        </div>
+
+        <form action="" id="form-login">
+            <label for="uid">
+                <span>帳號</span>
+                <input type="text" id="uid">
+            </label>
+
+            <label for="pw">
+                <span>密碼</span>
+                <input type="text" id="pw">
+            </label>
+
+            <div class="action-container">
+                <label for="remember">
+                    <input type="checkbox" id="remember" />
+                    <span>記住我</span>
+                </label>
+
+                <label for="keep-login">
+                    <input type="checkbox" id="keep-login" />
+                    <span>保持登入</span>
+                </label>
+
+                <a href="#">忘記密碼</a>
+            </div>
+            <input type="button" value="登入">
+
+            <div class="sns-login">
+                <a href="#"><img src="./images/member/google.png" alt="以google帳號登入"></a>
+                <a href="#"><img src="./images/member/line.png" alt="以line帳號登入"></a>
+                <a href="#"><img src="./images/member/facebook.png" alt="以facebook帳號登入"></a>
+            </div>
+        </form>
+
+        <form action="" id="form-signup" style="display: none;">
+            <label for="signup-uid">
+                <span>帳號</span>
+                <input type="text" id="signup-uid">
+            </label>            
+
+            <label for="signup-pw">
+                <span>密碼</span>
+                <input type="text" id="signup-pw">
+            </label>            
+
+            <!-- <label for="confirm-pw">
+                <span>密碼確認</span>
+                <input type="text" id="confirm-pw">
+            </label>            -->
+
+            <input type="button" value="註冊">
+
+            <div class="sns-login">
+                <a href="#"><img src="./images/member/google.png" alt="以google帳號登入"></a>
+                <a href="#"><img src="./images/member/line.png" alt="以line帳號登入"></a>
+                <a href="#"><img src="./images/member/facebook.png" alt="以facebook帳號登入"></a>
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>

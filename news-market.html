@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最新資訊</title>
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/nav-footer-general.css">
+    <link rel="stylesheet" href="./css/style-amy.css">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react-transition-group/dist/react-transition-group.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+</head>
+
+<body id="news-body">
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+        const { CSSTransition, TransitionGroup } = window.ReactTransitionGroup;
+
+        function CurrentItem({ href, content, date, title, bg, level, tags }) {
+            const className = `item level${level}`;
+            return (
+                <li className={className}>
+                    <a href={href} style={{ backgroundImage: `url(${bg})` }}>
+                        <div className="overlay"></div>
+                        <p className="content" dangerouslySetInnerHTML={{ __html: content }}></p>
+                        <div className="wrap">
+                            <p className="tags">
+                                {tags.map((tag, index) => (
+                                    <span key={index} className="tag">{tag}</span>
+                                ))}
+                            </p>
+                            <p>{date}</p>
+                            <h2>{title}</h2>
+                        </div>
+                    </a>
+                </li>
+            );
+        };
+
+        function NavBtn({ isCurrent = false, href, src, alt, animTarget }) {
+            const targetRef = useRef(null);
+
+            useEffect(() => {
+                targetRef.current = document.querySelector(`.characters .${animTarget}`);
+
+                return () => {
+                    if (targetRef.current) {
+                        targetRef.current.style.animation = 'none';
+                    }
+                };
+            }, [animTarget]);
+
+            const handleMouseEnter = () => {
+                if (targetRef.current && !targetRef.current.classList.contains('showall')) {
+                    targetRef.current.style.animation = 'moveUpAndDown 0.6s ease-in-out infinite';
+                }
+            };
+
+            const handleMouseLeave = () => {
+                if (targetRef.current) {
+                    targetRef.current.style.animation = 'none';
+                }
+            };
+
+            return (
+                <li className="btn">
+                    <a class={isCurrent === true ? "current" : ""} href={href} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                        <img src={src} alt={alt} />
+                    </a>
+                </li>
+            );
+        }
+
+        function CurrentEvents({ active }) {
+            const [currentActive, setCurrentActive] = useState(active);
+            const [direction, setDirection] = useState('');
+            const [rangeStart, setRangeStart] = useState(2);
+            const [rangeEnd, setRangeEnd] = useState(3);
+            const [items, setItems] = useState([]);
+            const [isMoving, setIsMoving] = useState(false);
+
+            const getEventData = async () => {
+                // const result = await axios.get("./json/currentEvent.json");
+                const result = await axios.get("https://a298034a.github.io/Chuckle/json/currentEvent.json");
+                setItems(result.data);
+            }
+
+            useEffect(() => {
+                getEventData();
+            }, []);
+
+            function debounce(func, wait) {
+                let timeout;
+                return function (...args) {
+                    const context = this;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(context, args), wait);
+                };
+            }
+
+            useEffect(() => {
+                const updateRange = debounce(() => {
+                    if (window.innerWidth < 860) {
+                        setRangeStart(1);
+                        setRangeEnd(2);
+                    } else {
+                        setRangeStart(2);
+                        setRangeEnd(3);
+                    }
+                }, 100);
+
+                updateRange();
+                window.addEventListener('resize', updateRange);
+
+                return () => {
+                    window.removeEventListener('resize', updateRange);
+                };
+            }, []);
+
+            const generateCurrentItems = () => {
+                if (items.length === 0) return [];
+
+                let newItems = [];
+                let level;
+
+                for (let i = currentActive - rangeStart; i < currentActive + rangeEnd; i++) {
+                    let index = i;
+                    if (i < 0) {
+                        index = items.length + i;
+                    } else if (i >= items.length) {
+                        index = i % items.length;
+                    }
+                    level = currentActive - i;
+                    newItems.push(<CurrentItem key={index} href={items[index].href} content={items[index].content} date={items[index].date} title={items[index].title} bg={items[index].bg} level={level} tags={items[index].tags} />);
+                }
+
+                return newItems;
+            };
+
+            const moveLeft = () => {
+                if (!isMoving) {
+                    setIsMoving(true);
+                    setDirection('left');
+                    setTimeout(() => {
+                        const newActive = currentActive - 1;
+                        setCurrentActive(newActive < 0 ? items.length - 1 : newActive);
+                    }, 0);
+
+                    setTimeout(() => {
+                        setIsMoving(false);
+                    }, 600);
+                }
+            };
+
+            const moveRight = () => {
+                if (!isMoving) {
+                    setIsMoving(true);
+                    setDirection('right');
+                    setTimeout(() => {
+                        const newActive = currentActive + 1;
+                        setCurrentActive(newActive % items.length);
+                    }, 0);
+
+                    setTimeout(() => {
+                        setIsMoving(false);
+                    }, 600);
+                }
+            };
+
+
+            return (
+                <>
+                    <div className="characters market">
+                        <figure className="sunny">
+                            <img src="./images/news/exhibition-char.png" alt="裝飾吉祥物"/>
+                        </figure>
+                        <figure className="rainy">
+                            <img src="./images/news/popup-char.png" alt="裝飾吉祥物"/>
+                        </figure>
+                        <figure className="showall winter">
+                            <img src="./images/news/market-char.png" alt="裝飾吉祥物"/>
+                        </figure>
+                    </div>
+                    <section id="current-events">
+                        <nav id="newinfo-nav">
+                            <ul className="btn-container">
+                                <li className="cloud">
+                                    <img src="./images/news/cloud.png" alt="裝飾雲" />
+                                </li>
+                                <NavBtn href="./news-exhibition.html" src="./images/news/exhibition.png" alt="展覽分類" animTarget="sunny" />
+                                <NavBtn href="./news-popup.html" src="./images/news/popup.png" alt="切換至快閃店分類" animTarget="rainy" />
+                                <NavBtn isCurrent={true} href="./news-market.html" src="./images/news/market-cur.png" alt="切換至市集分類" animTarget="winter" />
+                                <li className="cloud">
+                                    <img src="./images/news/cloud.png" alt="裝飾雲" />
+                                </li>
+                            </ul>
+                        </nav>
+                        <ul class="event-list">
+                            <TransitionGroup component={null}>
+                                {generateCurrentItems().map((item) => (
+                                    <CSSTransition
+                                        key={item.key}
+                                        timeout={1000}
+                                        classNames={{
+                                            enter: `${direction}-enter`,
+                                            enterActive: `${direction}-enter-active`,
+                                            exit: `${direction}-leave`,
+                                            exitActive: `${direction}-leave-active`,
+                                        }}
+                                    >
+                                        {item}
+                                    </CSSTransition>
+                                ))}
+                            </TransitionGroup>
+                        </ul>
+                        <div className="swiper-btn swiper-btn-pre" onClick={moveLeft}>
+                            <img src="./images/hand-l.png" alt="" />
+                        </div>
+                        <div className="swiper-btn swiper-btn-next" onClick={moveRight}>
+                            <img src="./images/hand-r.png" alt="" />
+                        </div>
+                    </section>
+                    <div className="character">
+                        <img src="./images/news/news-winter.png" alt="" />
+                    </div>
+                </>
+            );
+        }
+
+        function UpcommingItem({ href, src, alt, date, title, tags, level }) {
+            const className = `item level${level}`;
+            return (
+                <li className={className}>
+                    <a href={href}>
+                        <figure>
+                            <img src={src} alt={alt} />
+                        </figure>
+                        <div className="content">
+                            <p>
+                                {tags.map((tag, index) => (
+                                    <span key={index} className="tag">{tag}</span>
+                                ))}
+                            </p>
+                            <p>{date}</p>
+                            <h2>{title}</h2>
+                        </div>
+                    </a>
+                </li>
+            );
+        }
+
+        function UpcommingEvents({ active }) {
+            const [currentActive, setCurrentActive] = useState(active);
+            const [direction, setDirection] = useState('');
+            const [rangeStart, setRangeStart] = useState(2);
+            const [rangeEnd, setRangeEnd] = useState(3);
+            const [items, setItems] = useState([]);
+
+            const getEventData = async () => {
+                // const result = await axios.get("./json/upcommingEvent.json");
+                const result = await axios.get("https://a298034a.github.io/Chuckle/json/upcommingEvent.json");
+                setItems(result.data);
+            }
+
+            useEffect(() => {
+                getEventData();
+            }, []);
+
+            function debounce(func, wait) {
+                let timeout;
+                return function (...args) {
+                    const context = this;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(context, args), wait);
+                };
+            }
+
+            useEffect(() => {
+                const updateRange = debounce(() => {
+                    if (window.innerWidth < 860) {
+                        setRangeStart(1);
+                        setRangeEnd(2);
+                    } else {
+                        setRangeStart(2);
+                        setRangeEnd(3);
+                    }
+                }, 100);
+
+                updateRange();
+                window.addEventListener('resize', updateRange);
+
+                return () => {
+                    window.removeEventListener('resize', updateRange);
+                };
+            }, []);
+
+            const generateItems = () => {
+                if (items.length === 0) return [];
+
+                let newItems = [];
+                let level;
+
+                for (let i = currentActive - rangeStart; i < currentActive + rangeEnd; i++) {
+                    let index = i;
+                    if (i < 0) {
+                        index = items.length + i;
+                    } else if (i >= items.length) {
+                        index = i % items.length;
+                    }
+                    level = currentActive - i;
+
+                    newItems.push(<UpcommingItem key={index}
+                        href={items[index].href}
+                        src={items[index].src}
+                        alt={items[index].alt}
+                        date={items[index].date}
+                        title={items[index].title}
+                        tags={items[index].tags}
+                        level={level} />);
+                }
+                return newItems;
+            };
+
+            const moveLeft = () => {
+                setDirection('left');
+                setTimeout(() => {
+                    const newActive = currentActive - 1;
+                    setCurrentActive(newActive < 0 ? items.length - 1 : newActive);
+                }, 0);
+            };
+
+            const moveRight = () => {
+                setDirection('right');
+                setTimeout(() => {
+                    const newActive = currentActive + 1;
+                    setCurrentActive(newActive % items.length);
+                }, 0);
+            };
+
+            return (
+                <>
+                    <section id="upcoming-events">
+                        <figure class="upcoming-title">
+                            <img src="./images/news/upcoming-title.webp" alt="即將開始" />
+                        </figure>
+                        <ul>
+                            <TransitionGroup component={null}>
+                                {generateItems().map((item) => (
+                                    <CSSTransition
+                                        key={item.key}
+                                        timeout={1000}
+                                        classNames={{
+                                            enter: `${direction}-enter`,
+                                            enterActive: `${direction}-enter-active`,
+                                            exit: `${direction}-leave`,
+                                            exitActive: `${direction}-leave-active`,
+                                        }}
+                                    >
+                                        {item}
+                                    </CSSTransition>
+                                ))}
+                            </TransitionGroup>
+                        </ul>
+                        <div className="swiper-btn swiper-btn-pre" onClick={moveLeft}>
+                            <img src="./images/hand-l.png" alt="" />
+                        </div>
+                        <div className="swiper-btn swiper-btn-next" onClick={moveRight}>
+                            <img src="./images/hand-r.png" alt="" />
+                        </div>
+                    </section>
+                </>
+            );
+        }
+
+        const active = 2;
+
+        ReactDOM.render(
+            <React.Fragment>
+                <CurrentEvents active={active} />
+                <UpcommingEvents active={active} />
+            </React.Fragment>,
+            document.getElementById('root')
+        );
+    </script>
+    <script src="./js/navbar.js"></script>
+    <script src="./js/footer.js"></script>
+</body>
+
+</html>

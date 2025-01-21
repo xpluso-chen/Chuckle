@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react-transition-group/dist/react-transition-group.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Lobster");
+
+        body {
+            background-color: #89FAD0;
+            font-family: "Lobster";
+        }
+
+        #carousel {
+            position: absolute;
+            height: 200px;
+            width: 810px;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .arrow {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            text-align: center;
+            font-size: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: #228291;
+            line-height: 30px;
+            margin-top: 85px;
+            z-index: 1000;
+        }
+
+        .arrow-right {
+            left: 780px;
+        }
+
+        .item {
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            position: absolute;
+            transition: height 1s, width 1s, left 1s, margin-top 1s, line-height 1s, background-color 1s;
+        }
+
+        .level-2 {
+            height: 150px;
+            width: 110px;
+            line-height: 150px;
+            background-color: #228291;
+            left: 650px;
+            margin-top: 25px;
+        }
+
+        .level-1 {
+            height: 180px;
+            width: 130px;
+            line-height: 180px;
+            background-color: #6796E5;
+            left: 500px;
+            margin-top: 10px;
+        }
+
+        .level0 {
+            height: 200px;
+            width: 150px;
+            line-height: 200px;
+            background-color: #4EC9E1;
+            left: 330px;
+        }
+
+        .level1 {
+            height: 180px;
+            width: 130px;
+            line-height: 180px;
+            background-color: #6796E5;
+            margin-top: 10px;
+            left: 180px;
+        }
+
+        .level2 {
+            height: 150px;
+            width: 110px;
+            line-height: 150px;
+            background-color: #228291;
+            margin-top: 25px;
+            left: 50px;
+        }
+
+        .left-enter {
+            opacity: 0;
+            left: -60px;
+            height: 120px;
+            width: 90px;
+            line-height: 120px;
+            margin-top: 40px;
+        }
+
+        .left-enter.left-enter-active {
+            opacity: 1;
+            left: 50px;
+            height: 150px;
+            width: 110px;
+            line-height: 150px;
+            margin-top: 25px;
+            transition: left 1s, opacity 1s, height 1s, width 1s, margin-top 1s, line-height 1s;
+        }
+
+        .left-leave {
+            opacity: 1;
+            left: 650px;
+            height: 150px;
+            width: 110px;
+            line-height: 150px;
+            margin-top: 25px;
+        }
+
+        .left-leave.left-leave-active {
+            left: 780px;
+            opacity: 0;
+            height: 120px;
+            line-height: 120px;
+            margin-top: 40px;
+            width: 90px;
+            transition: left 1s, opacity 1s, height 1s, width 1s, margin-top 1s, line-height 1s;
+        }
+
+        .right-enter {
+            opacity: 0;
+            left: 760px;
+            height: 120px;
+            width: 90px;
+            line-height: 120px;
+            margin-top: 40px;
+        }
+
+        .right-enter.right-enter-active {
+            left: 650px;
+            opacity: 1;
+            height: 150px;
+            margin-top: 25px;
+            line-height: 150px;
+            width: 110px;
+            transition: left 1s, opacity 1s, height 1s, width 1s, margin-top 1s, line-height 1s;
+        }
+
+        .right-leave {
+            left: 50px;
+            height: 150px;
+            opacity: 1;
+            margin-top: 25px;
+            line-height: 150px;
+            width: 110px;
+        }
+
+        .right-leave.right-leave-active {
+            left: -60px;
+            opacity: 0;
+            height: 120px;
+            width: 90px;
+            line-height: 120px;
+            margin-top: 40px;
+            transition: left 1s, opacity 1s, height 1s, width 1s, margin-top 1s, line-height 1s;
+        }
+
+        .noselect {
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+        const { CSSTransition, TransitionGroup } = window.ReactTransitionGroup;
+
+
+        function Item({ id, level }) {
+            const className = `item level${level}`;
+            return (
+                <div className={className}>
+                    {id}
+                </div>
+            );
+        }
+
+        function Carousel({ items, active }) {
+            const [currentActive, setCurrentActive] = useState(active);
+            const [direction, setDirection] = useState('');
+
+            const generateItems = () => {
+                let newItems = [];
+                let level;
+
+                for (let i = currentActive - 2; i < currentActive + 3; i++) {
+                    let index = i;
+                    if (i < 0) {
+                        index = items.length + i;
+                    } else if (i >= items.length) {
+                        index = i % items.length;
+                    }
+                    level = currentActive - i;
+                    newItems.push(<Item key={index} id={items[index]} level={level}/>);
+                }
+                return newItems;
+            };
+
+            const moveLeft = () => {
+                setDirection('left');
+                setTimeout(() => {
+                    const newActive = currentActive - 1;
+                    setCurrentActive(newActive < 0 ? items.length - 1 : newActive);
+                }, 0);
+            };
+
+            const moveRight = () => {
+                setDirection('right');
+                setTimeout(() => {
+                    const newActive = currentActive + 1;
+                    setCurrentActive(newActive % items.length);
+                }, 0);
+            };
+
+            return (
+                <>
+                <div id="carousel" className="noselect">
+                    <div className="arrow arrow-left" onClick={moveLeft}><i className="fi-arrow-left"></i></div>
+                    <TransitionGroup component={null}>
+                        {generateItems().map((item) => (
+                            <CSSTransition
+                                key={item.key}
+                                timeout={1000}
+                                classNames={{
+                                    enter: `${direction}-enter`,
+                                    enterActive: `${direction}-enter-active`,
+                                    exit: `${direction}-leave`,
+                                    exitActive: `${direction}-leave-active`,
+                                }}
+                            >
+                                {item}
+                            </CSSTransition>
+                        ))}
+                    </TransitionGroup>
+                    <div className="arrow arrow-right" onClick={moveRight}><i className="fi-arrow-right"></i></div>
+                </div>
+                </>
+            );
+        }
+
+        const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const active = 2;
+
+        ReactDOM.render(
+            <Carousel items={items} active={active} />,
+            document.getElementById('root')
+        );
+    </script>
+
+
+</body>
+
+</html>

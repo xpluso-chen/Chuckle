@@ -1,0 +1,93 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/* #region 重置所有樣式 */
+/* 重置所有標籤的樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 重置字體 */
+body {
+    font-family:
+        /*西文*/
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial,
+        /*中文*/
+        "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+    font-size: 100%;
+    line-height: 1.5;
+}
+
+/* 重置標題 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+/* 重置列表 */
+ul,
+ol {
+    list-style: none;
+}
+
+/* 重置圖片 */
+img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 重置連接 */
+a {
+    display: block;
+    /* 將預設inline改為block */
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+/* #endregion */
+
+/* #region 全域設定 */
+@font-face {
+    font-family: GenSenRounded2-M;
+    src: url(../fonts/GenSenRounded2-M.ttc);
+    font-display: swap;
+}
+
+:root {
+    /* 背景基礎色 */
+    --base-backgroundColor: rgb(255, 247, 205);
+    --main-yellow: rgb(255, 226, 74);
+    --hover-yellow: rgb(237, 199, 0);
+    --main-green: rgb(125, 229, 175);
+    --hover-green:rgb(85, 183, 129);
+    --main-pink: rgb(245, 105, 90);
+    --hover-pink:rgb(219, 51, 34);
+    --black: rgb(0, 0, 0);
+    --black-alpha-25: rgba(0, 0, 0, 0.25);
+    --white: rgb(255, 253, 243);
+    --white-alpha-80: rgb(255, 253, 243,0.8);
+    
+    --gray: rgb(179, 173, 144);
+    --theme-pink: rgb(252, 163, 179);
+
+    --basic1-shadow: -2px 2px 6px -2px var(--black-alpha-25);
+
+    /* 官方活動 */
+    --event-red: rgb(206, 4, 4);
+}
+
+body {
+    padding-top: 88px;
+    background-color: var(--base-backgroundColor);
+    font-family: GenSenRounded2-M;
+}
+
+/* #endregion */

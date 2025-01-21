@@ -1,0 +1,56 @@
+[
+    {
+        "storeName": "甜蜜蛋糕店",
+        "imgSrc": "./images/theme/cookie.png",
+        "product": "草莓白巧雪花餅",
+        "slogan": "香濃草莓白巧克力醬"
+    },
+    {
+        "storeName": "琉璃冰島",
+        "imgSrc": "./images/theme/milkshake-2.png",
+        "product": "草莓優格冰沙",
+        "slogan": "夏日無負擔的選擇"
+    },
+    {
+        "storeName": "星光咖啡屋",
+        "imgSrc": "./images/theme/cheese-cake.png",
+        "product": "草莓芝士蛋糕",
+        "slogan": "每口都吃得到酸甜滋味"
+    },
+    {
+        "storeName": "綠野仙踪茶屋",
+        "imgSrc": "./images/theme/other-2.png",
+        "product": "草莓紅茶",
+        "slogan": "清新果香與茶韻交織"
+    },
+    {
+        "storeName": "晨曦花茶坊",
+        "imgSrc": "./images/theme/Smoothies.png",
+        "product": "草莓玫瑰花茶",
+        "slogan": "花香與果香的浪漫體驗"
+    },
+    {
+        "storeName": "心醉居",
+        "imgSrc": "./images/theme/other-3.png",
+        "product": "草莓燕麥奶昔",
+        "slogan": "營養健康的飲料首選"
+    },
+    {
+        "storeName": "夢幻茶館",
+        "imgSrc": "./images/theme/latte.png",
+        "product": "森林草莓拿鐵",
+        "slogan": "新鮮與濃郁完美結合"
+    },
+    {
+        "storeName": "微醺果調",
+        "imgSrc": "./images/theme/green-tea.png",
+        "product": "草莓蜜桃綠茶",
+        "slogan": "草莓與蜜桃的甜美邂逅"
+    },
+    {
+        "storeName": "白泉咖啡廳",
+        "imgSrc": "./images/theme/custard.png",
+        "product": "草莓卡士達泡芙",
+        "slogan": "甜而不膩，難以抗拒"
+    }
+]

@@ -1,0 +1,946 @@
+@charset "UTF-8";
+
+/* #region 重置所有樣式 */
+
+
+/* 重置字體 */
+body {
+    background-color: var(--base-backgroundColor);
+
+
+    font-family:
+        /*西文*/
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial,
+        /*中文*/
+        'GenSenRounded2-M', "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+    font-size: 100%;
+    line-height: 1.5;
+    position: relative;
+
+}
+
+
+/* #endregion */
+
+/* #region 共用區*/
+
+h2 {
+    font-size: 25px;
+    letter-spacing: 1px;
+
+}
+
+h1 {
+    font-size: 35px;
+    letter-spacing: 2px;
+}
+
+.title h2 {
+    font-size: 35px;
+    padding: 1rem 0rem;
+    letter-spacing: 2px;
+}
+
+h3 {
+    font-size: 20px;
+    letter-spacing: 1px;
+
+}
+
+h4 {
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+h5 {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+#newArticleBody p,
+#articleBody p,
+#underNev p {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+hr {
+    border-color: var(--black);
+}
+
+
+#comment p,
+.time p,
+#post-info p {
+    font-size: 16px;
+}
+
+.img-info {
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.img-info img {
+    /* icon */
+    height: 24px;
+    width: 24px;
+}
+
+/* #endregion */
+
+/* #region 文章主體 */
+#post-body,
+#comment,
+#listBody {
+    /* position: fixed; */
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    width: 50%;
+    margin-left: 32%;
+
+}
+
+@media (max-width:390px) {
+    #post-body {
+        width: 150%;
+    }
+}
+
+@media (max-width:1249px) {
+    #listBody {
+        margin-left: 35%;
+    }
+}
+
+@media (max-width:1145px) {
+    #listBody {
+        margin-left: 36%;
+    }
+}
+
+@media (max-width:1090px) {
+    #listBody {
+        margin-left: 37%;
+    }
+}
+
+@media (max-width:1047px) {
+    #listBody {
+        margin-left: 38%;
+    }
+}
+
+
+
+
+#comment {
+    margin-top: 4%;
+}
+
+#post-body .title {
+    margin: 5% 0;
+}
+
+/* 觀看數 */
+.seeCount {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 2%
+}
+
+.seeCount h5 {
+    font-weight: 600;
+}
+
+
+.comment {
+    display: flex;
+    width: 100%;
+    height: 20%;
+    margin-top: 3%;
+}
+
+.comment h2 {
+    margin-bottom: 0.5rem;
+}
+
+.comment .memberFace {
+    /* 控制圖片尺寸 */
+    /* height: 16%;
+    width: 16%; */
+    padding-top: 1%;
+    padding-right: 2%;
+
+    width: 100px;
+    /* 設置寬度，根據需要調整 */
+    height: 100px;
+    /* 設置高度，與寬度一致以保持圓形 */
+}
+
+.comment .memberFace img {
+    /* width: 100%;
+    height: 100%; */
+    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* 保持圖片內容覆蓋整個容器 */
+
+}
+
+.memberComment {
+    width: 100%;
+}
+
+.memberComment .time {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    margin-top: 1rem 0;
+}
+
+
+/* #endregion */
+
+/* #region 最新消息-文章主體 */
+#newArticleBody #post-body p {
+    font-size: 20px;
+    padding: 2rem 0;
+}
+
+#post-body .img2and2 {
+    /* 圖片並排 */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    gap: 2%;
+    flex: 1;
+    width: 49%;
+}
+
+#blockbuttom {
+    height: 5vh;
+}
+
+/* #endregion */
+
+/* #region 文章TAG區*/
+#newArticleBody,
+#articleBody {
+    position: relative;
+}
+
+
+
+#post-info {
+    /* width: 400px; */
+    width: 20%;
+    height: auto;
+
+    /* position: fixed; */
+    /* top: 13%; */
+    position: absolute;
+    left: 7%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+@media (max-width:850px) {
+    #post-info{
+        width: 170px;
+    }
+}
+@media (max-width:800px) {
+    #post-body,#comment {
+        margin-left: 38%;
+     }
+}
+@media (max-width:610px) {
+    #post-body,#comment {
+        margin-left: 40%;
+     }
+}
+
+@media (max-width:550px) {
+    #post-info {
+         position: relative;
+        width: 90%;
+        align-items: flex-start;
+        margin: 5%;
+        left: 0%;
+    }
+    #post-body,#comment {
+        /* margin-top: 2%; */
+        margin-left: 0%;
+        width: 100%;
+        padding: 0% 8%;
+     }
+}
+
+
+#post-info-text {
+    padding: 10%;
+    padding-bottom: 20px;
+}
+
+@media (max-width:390px) {
+    #post-info-text {
+        display: flex;
+        /* 為了TAG內容並排 */
+
+    }
+
+}
+
+.bio {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+@media (max-width:1655px) {
+    .bio {
+        flex-direction: column;
+    }
+
+}
+
+.bio .authorFace {
+    margin-right: 1rem;
+    max-width: 120px;
+    /* width: 120px; */
+    /* 設置寬度，根據需要調整 */
+    /* height: 120px; */
+    /* 設置高度，與寬度一致以保持圓形 */
+}
+
+.bio img {
+
+    border-radius: 50%;
+    /* width: 100%;
+    height: auto; */
+    object-fit: cover;
+    /* 保持圖片內容覆蓋整個容器 */
+
+}
+
+.memberName {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media (max-width:1655px) {
+    .memberName {
+        align-items: center;
+    }
+
+}
+
+#post-info hr {
+    margin: 20px 0px;
+}
+
+#postTime {
+    margin: 10px 0px;
+}
+
+.tagsArea {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    cursor: pointer;
+    /* width: fit-content; */
+}
+
+
+/* 文章列表-TAG區顏色 */
+#articleListBody .tag {
+    margin: 0.5rem 0.5rem;
+    margin-left: 0;
+    font-size: 20px;
+    border-radius: 10px;
+    color: var(--black);
+}
+
+#articleListBody #hotFilter .tag {
+    margin: 0.5rem 0.5rem;
+    margin-left: 0;
+    background-color: var(--black);
+    color: var(--base-backgroundColor);
+    padding: 0.4rem 0.8rem;
+
+
+}
+
+#articleListBody #hotFilter .tag:hover {
+    transform: scale(1.1, 1.1);
+    transition: all .25s linear;
+}
+
+#articleListBody #listTag .tag {
+    margin: 0.5rem 0.5rem;
+    margin-left: 0;
+    border: var(--black) 3px solid;
+    font-weight: 500;
+    padding: 0.2rem 0.8rem;
+}
+
+#articleListBody #listTag .tag:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    transform: scale(1.1, 1.1);
+    transition: all .25s linear;
+}
+
+
+/* 文章內容-TAG區顏色 */
+#articleBody #post-info {
+    color: var(--white);
+    background-color: var(--main-pink);
+}
+
+#articleBody #post-info hr {
+    border-color: var(--white);
+}
+
+#articleBody .tag {
+    padding: 0.1rem 1rem;
+    border-radius: 20px;
+    font-size: 14px;
+    margin: 0.5rem 0.5rem;
+    margin-left: 0;
+    background-color: var(--main-green);
+    color: var(--black);
+}
+
+#articleBody .tag:hover {
+    background-color: var(--hover-green);
+}
+
+/* 最新消息文章-TAG區顏色+字體 */
+#newArticleBody #post-info {
+    color: var(--black);
+    background-color: var(--main-green);
+}
+
+#newArticleBody #post-info hr {
+    border-color: var(--black);
+}
+
+#newArticleBody .tag {
+    margin: 0.5rem 0.5rem;
+    margin-left: 0;
+    padding: 0.1rem 1rem;
+    border-radius: 20px;
+    font-size: 14px;
+    background-color: var(--main-yellow);
+}
+
+#newArticleBody .tag:hover {
+    background-color: var(--hover-yellow);
+}
+
+
+#aboutPost h2 {
+    padding-bottom: 1rem;
+    font-size: 25px;
+}
+
+#aboutPost P {
+    font-size: 16px;
+}
+
+#newArticleBody #post-info-icon {
+    color: var(--black);
+}
+
+/* ICON區 */
+#post-info-icon {
+    color: var(--white);
+    padding: 0px 40px;
+    padding-bottom: 40px;
+}
+
+#post-info-icon h5 {
+    font-weight: 600;
+}
+
+.posts-btn {
+    display: flex;
+}
+
+
+.posts-btn img {
+    width: 32px;
+    margin: 3px;
+    cursor: pointer;
+}
+
+#post-info-icon p {
+    font-size: 14px;
+    padding-left: 7px;
+    /* margin-top: -8px; */
+}
+
+/* #endregion */
+
+/* #region 留言送出欄*/
+
+#send {
+
+    display: flex;
+    align-content: space-between;
+    margin-top: 10%;
+    width: 100%;
+
+}
+#send .sendFrom{
+
+    width: 100%;
+    margin-right: 2%;
+}
+
+#send img {
+    /* icon */
+    width: 32px;
+    height: 32px;
+
+}
+
+#send input {
+    width: 100%;
+    height:100%;
+    border-radius: 30px;
+    margin-right: 10px;
+    padding-left: 10px;
+
+}
+
+
+/* #endregion */
+
+/*#region 列表區 */
+
+.list {
+    margin: 50px 0px;
+    display: flex;
+    width: 100%;
+    height: 20%;
+}
+.list:hover{
+    /* color: var(--black-alpha-25); */
+    color: rgba(0, 0, 0, 0.5);;
+}
+
+.list h2 {
+    /* 標題粗體，這個字體不適合 */
+    /* font-weight: 700; */
+}
+
+.list .cover {
+
+    /* padding-top: 1%; */
+    padding-left: 2%;
+
+    width: 200px;
+
+    /* 設置寬度，根據需要調整 */
+    height: auto;
+    /* 設置高度，與寬度一致以保持圓形 */
+}
+
+.list .cover img {
+    /* width: 100%;
+    height: 100%; */
+    border-radius: 20px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* 保持圖片內容覆蓋整個容器 */
+
+}
+
+.listTextArea {
+    width: 100%;
+    height: auto;
+}
+
+.listTextArea h2 {
+    overflow: hidden;
+    /* 多出來時則省略 */
+    text-overflow: ellipsis;
+    /* 自動加省略號... */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* 定義Box垂直佈局 */
+    -webkit-line-clamp: 1;
+    /* 行數限制 */
+}
+
+.listTextArea p {
+    font-size: 16px;
+    overflow: hidden;
+    /* 多出來時則省略 */
+    text-overflow: ellipsis;
+    /* 自動加省略號... */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* 定義Box垂直佈局 */
+    -webkit-line-clamp: 3;
+    /* 行數限制 */
+}
+
+.listTextArea .postTime {
+    margin-bottom: 1rem;
+}
+
+/* AD */
+#title {
+    display: flex;
+    align-items: center;
+    /* 讓AD框和文字一樣高 */
+}
+
+#AD {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #B3AD90;
+    border-radius: 30px;
+    width: 42px;
+    height: 20px;
+    margin-right: 0.5rem;
+}
+
+/* 查看更多 */
+#moreArea {
+    /* 讓紅框至中 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 40px;
+    margin-bottom: 120px;
+}
+
+#more {
+    /* 讓紅框的字至中 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--main-pink);
+    color: var(--white);
+    border-radius: 30px;
+    width: 170px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 25px;
+
+}
+#more:hover{
+    background-color: var(--hover-pink); 
+}
+
+
+/* #endregion */
+
+/* #region 文章列表左邊的篩選區*/
+
+#post-filter {
+    width: 320px;
+    height: auto;
+    background-color: var(--main-pink);
+    position: fixed;
+    top: 150px;
+    left: 5%;
+    border-radius: 30px;
+    padding: 25px;
+    position: absolute;
+/* 讓打開列表時不會因為過長而被裁切掉 */
+}
+
+#post-filter-text {
+    padding: 50px;
+}
+
+
+
+/* #endregion */
+
+
+/* #region 草莓季大區塊規劃*/
+#underNev {
+    display: flex;
+
+}
+
+#themeBody {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex: 3;
+    /* width: 50%; */
+    /* margin-left: 25%; */
+    /* margin-bottom: 25%; */
+    /* text-align: center; */
+}
+
+#left-block {
+
+    flex: 1;
+}
+
+#right-block {
+    flex: 1;
+}
+
+/* #endregion */
+
+/* #region 草莓季中間區塊*/
+body.themeSeason {
+    background-color: var(--white);
+}
+
+#themeBody {
+    position: relative;
+}
+
+#themeBody #banner {
+    margin-top: -88px;
+}
+
+.storeBlock {
+    display: flex;
+    justify-content: space-between;
+}
+
+.store {
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    /* 讓子元素垂直排列 */
+    align-items: center;
+    padding: 2%;
+    margin-top: 5%;
+}
+
+.straw_icon {
+    width: 10%;
+}
+
+.store .slogan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    /* 粉框 */
+    /* padding: 5px 16px;
+    margin-top: 2%;
+    background-color: var(--theme-pink);
+    border-radius: 99px;
+    width: 1; */
+}
+
+.slogan h5 {
+    padding: 1rem 2%;
+    text-align: center;
+}
+
+.store .thing {
+    /* width: auto;
+    height: 50%; */
+    border-radius: 20px;
+    margin: 5% 0;
+    cursor: pointer;
+}
+
+/* 草莓遮色片 */
+.thing .col {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin: 1%;
+}
+
+
+.thing .mask {
+    mask-image: url(../images/theme/straw_icon.svg);
+    mask-size: 100% 100%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    position: relative;
+}
+
+.thing img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.thing .photo {
+    z-index: 10;
+    width: 97%;
+    position: absolute;
+    margin: -9% 10%;
+}
+/* 草莓 */
+.thing .photo::before {
+    content: "更多介紹";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+
+    /* font-weight: bold; */
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: 20;
+}
+
+.thing .photo::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.thing .photo:hover::before,
+.thing .photo:hover::after {
+    opacity: 1;
+}
+
+
+.thing .straw {
+    width: 100%;
+
+}
+
+
+/* #endregion */
+
+
+/* #region 草莓季左右區塊*/
+
+.block figure {
+
+    /* width: 100%; */
+    text-align: center;
+}
+
+#straw-1 {
+    width: 70%;
+    margin: 0% 10%;
+    margin-top: 80%;
+}
+
+#straw-2 {
+    position: absolute;
+    bottom: 1%;
+    right: 70%;
+    z-index: 1;
+    margin-left: 5%;
+
+}
+
+
+#straw-3 {
+    /* width: 70%; */
+    margin-left: 10%;
+    margin-top: 100%;
+}
+
+
+.textArea {
+    padding: 40px;
+    font-size: 20px;
+    margin: 20%;
+
+    height: auto;
+    background-color: var(--theme-pink);
+    border-radius: 30px;
+}
+
+/* #endregion */
+
+/* #region 頁碼暫時用圖片*/
+#page-choose {
+    display: flex;
+    /* padding: 2%; */
+    margin-top: 5%;
+    margin-bottom: 10%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#page-choose a {
+    /* width: 5%; */
+    height: auto;
+    margin: 1%;
+}
+
+/* 頁籤 */
+ .pageChoose-btn {
+    height: auto;
+    margin: 1%;
+    cursor: pointer;
+
+}
+
+.pageChoose-next:hover {
+    animation: moveRight 0.6s ease-in-out infinite;
+}
+@keyframes moveRight {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(15px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+.pageChoose-pre:hover {
+    animation: moveLeft 0.6s ease-in-out infinite;
+}
+@keyframes moveLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-15px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* #endregion */

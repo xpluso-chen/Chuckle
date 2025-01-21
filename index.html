@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuckle</title>
+    <link rel="icon" href="./favicon.ico">
+    <link rel="preload" href="./images/index/map.webp" as="image">
+    <link rel="preload" href="./images/index/map-820.webp" as="image">
+    <link rel="preload" href="./images/index/news-bg.webp" as="image">
+    <link rel="preload" as="font" crossorigin="anonymous" href="./fonts/GenSenRounded2-M.ttc">
+
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/nav-footer-general.css">
+    <link rel="stylesheet" href="./css/style-amy.css">
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <!-- 網站介紹 -->
+        <section id="introduce">
+            <div class="first-article rotate-effect">
+                <figure class="star pulse-animation-2s">
+                    <img src="./images/index/star.png" alt="裝飾星星">
+                </figure>
+                <figure class="flower">
+                    <img src="./images/index/flower.png" alt="裝飾花">
+                </figure>
+                <div class="content">
+                    <h2>地圖直接連結文章！</h2>
+                    <p>不用地圖和文章來回搜尋！<br>使用地圖找尋附近有趣的景點時，點選店名就可以直接看到跟景點相關的文章</p>
+                </div>
+                <figure class="corner">
+                    <img src="./images/index/dialog-box-corner-green.png" alt="對話框尖角">
+                </figure>
+                <figure class="character">
+                    <img src="./images/index/sunny.png" alt="吉祥物 sunny 芒果仔">
+                </figure>
+                <figure class="star pulse-animation-3s">
+                    <img src="./images/index/star.png" alt="裝飾星星">
+                </figure>
+            </div>
+            <div class="second-article">
+                <figure class="character">
+                    <img src="./images/index/rainy.png" alt="吉祥物 rainy 雨滴仔">
+                </figure>
+                <figure class="corner">
+                    <img src="./images/index/dialog-box-corner-pink.png" alt="對話框尖角">
+                </figure>
+                <div class="content">
+                    <h2>最近不知道可以去哪裡嗎？</h2>
+                    <p>Chuckle 每月都會出一個新主題整理相關店家帶給你出遊的靈感<br>不定期舉辦小活動等你來參加</p>
+                </div>
+                <figure class="flower">
+                    <img src="./images/index/flower.png" alt="裝飾花">
+                </figure>
+            </div>
+            <div class="third-article">
+                <figure class="flower">
+                    <img src="./images/index/flower.png" alt="裝飾花">
+                </figure>
+                <div class="content">
+                    <h2>想知道最近有什麼新奇的活動？</h2>
+                    <p>快來最新資訊看看！<br>讓喜歡潮流時事的大家隨時掌握各地快閃店、市集的消息</p>
+                </div>
+                <figure class="corner">
+                    <img src="./images/index/dialog-box-corner-yellow.png" alt="對話框尖角">
+                </figure>
+                <figure class="character">
+                    <img src="./images/index/winter.png" alt="吉祥物 winter 花生仔">
+                </figure>
+            </div>
+        </section>
+        <!-- 最新活動 -->
+        <section id="news">
+            <div class="cloud-l"><img src="./images/index/animate-tv-cloud-left.gif" alt="裝飾雲" /></div>
+            <div class="cloud-r"><img src="./images/index/animate-tv-cloud-right.gif" alt="裝飾雲" /></div>
+            <picture class="whatnews">
+                <source media="(max-width: 820px)" srcset="./images/index/whatnews-820.webp" />
+                <img src="./images/index/whatnews.webp" alt="最新活動">
+            </picture>
+            <div id="root" class="carousel"></div>
+        </section>
+        <!-- 熱門文章 -->
+        <section id="hot-article">
+            <h2><img src="./images/index/hot.webp" alt="熱門文章"></h2>
+            <div class="content">
+                <ul>
+                    <li class="item">
+                        <div class="time-tags">
+                            <p>2024/09/06</p>
+                            <div class="tags">
+                                <a class="tag" href="./articleList-react.html">麵屋雲山</a>
+                                <a class="tag" href="./articleList-react.html">小豬拉麵</a>
+                                <a class="tag" href="./articleList-react.html">拉麵</a>
+                            </div>
+                        </div>
+                        <a class="title" href="./article.html">在台北吃拉麵只知道三嵐拉麵嗎？<br>精選5家特色拉麵</a>
+                    </li>
+                    <li class="item">
+                        <div class="time-tags">
+                            <p>2024/09/05</p>
+                            <div class="tags">
+                                <a class="tag" href="./articleList-react.html">牛肉湯</a>
+                                <a class="tag" href="./articleList-react.html">台南</a>
+                            </div>
+                        </div>
+                        <a class="title" href="./article.html">來台南就是要喝牛肉湯！<br>私心口袋名單公開</a>
+                    </li>
+                    <li class="item">
+                        <div class="time-tags">
+                            <p>2024/09/06</p>
+                            <div class="tags">
+                                <a class="tag" href="./articleList-react.html">基隆</a>
+                                <a class="tag" href="./articleList-react.html">鬆餅</a>
+                            </div>
+                        </div>
+                        <a class="title" href="./article.html">無法忘懷的綿密鬆餅－幸知鬆餅屋</a>
+                    </li>
+                    <li>
+                        <a class="tag more" href="./articleList-react.html">查看更多</a>
+                    </li>
+                </ul>
+                <!-- data-json-path => json 資料路徑 -->
+                <div id="map" data-json-path="https://a298034a.github.io/Chuckle/json/indexMarker.json"></div>
+            </div>
+            <div class="sunny-r"><img src="./images/index/role-2.png" alt="裝飾角色"></div>
+            <div class="sunny-l"><img src="./images/index/role-1.png" alt="裝飾角色"></div>
+        </section>
+    </main>
+
+    <script src="./js/indexUtility.js"></script>
+    <script src="./js/navbar.js"></script>
+    <script src="./js/footer.js"></script>
+    <script>(g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+            ({ key: "AIzaSyBnV_x0SwoErXaHcDSIh84eI1y4YRj0sYY", v: "weekly" });</script>
+    <script src="./js/initMap.js"></script>
+
+    <script type="text/babel">
+        const { useEffect, useState, useRef } = React;
+
+        function Item({ bg, title, date, className }) {
+            return (
+                <a className={`swiper-slide ${className}`} href="#" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(136, 136, 136, 0.2) 28%, rgba(96, 95, 95, 0.5) 60%, #383737 90%), url(${bg})` }}>
+                    <h2>{title}</h2>
+                    <p>{date}</p>
+                </a>
+            )
+        }
+
+        function App() {
+            const [slideIndex, setSlideIndex] = useState(0);
+            const isThrottledRef = useRef(false);
+
+            const slideNumber = items.length;
+
+            const handleNext = () => {
+                if (!isThrottledRef.current) {
+                    isThrottledRef.current = true;
+                    setSlideIndex((prevIndex) => (prevIndex === slideNumber - 1 ? 0 : prevIndex + 1));
+
+                    document.documentElement.style.setProperty('--next-z', `5`);
+                    document.documentElement.style.setProperty('--prev-z', `9`);
+
+                    setTimeout(() => {
+                        isThrottledRef.current = false;
+                    }, 500);
+                }
+            };
+
+            const handlePrev = () => {
+                if (!isThrottledRef.current) {
+                    isThrottledRef.current = true;
+                    setSlideIndex((prevIndex) => (prevIndex === 0 ? slideNumber - 1 : prevIndex - 1));
+
+                    document.documentElement.style.setProperty('--next-z', `9`);
+                    document.documentElement.style.setProperty('--prev-z', `5`);
+
+                    setTimeout(() => {
+                        isThrottledRef.current = false;
+                    }, 500);
+                }
+            };
+
+            const getClassNames = (index) => {
+                if (index === slideIndex) {
+                    return 'active';
+                } else if (index === (slideIndex === 0 ? slideNumber - 1 : slideIndex - 1)) {
+                    return 'prev';
+                } else if (index === (slideIndex === slideNumber - 1 ? 0 : slideIndex + 1)) {
+                    return 'next';
+                } else {
+                    return '';
+                }
+            };
+
+            const handleDotClick = (index) => {
+                if (!isThrottledRef.current) {
+                    setSlideIndex(index);
+                }
+            };
+
+            //按鈕hover
+            useEffect(() => {
+                const arrowL = document.querySelector(`.arrow-btn-l`);
+
+                arrowL.addEventListener('mouseover', function () {
+                    this.src = './images/index/button-hover-2.png';
+                });
+
+                arrowL.addEventListener('mouseout', function () {
+                    this.src = './images/index/button-2.png';
+                });
+
+                const arrowR = document.querySelector(`.arrow-btn-r`);
+
+                arrowR.addEventListener('mouseover', function () {
+                    this.src = './images/index/button-hover-1.png';
+                });
+
+                arrowR.addEventListener('mouseout', function () {
+                    this.src = './images/index/button-1.png';
+                });
+            }, []);
+
+            //自動輪播
+            useEffect(() => {
+                const interval = setInterval(() => {
+                    handleNext();
+                }, 5000); // 每5秒切换一次
+
+                // 清除計時器
+                return () => clearInterval(interval);
+            }, [slideIndex]);
+
+            return (
+                <>
+                    <div className="wrapper">
+                        {items.map((item, index) => (
+                            <Item
+                                key={index}
+                                bg={item.bg}
+                                title={item.title}
+                                date={item.date}
+                                className={getClassNames(index)}
+                            />
+                        ))}
+                    </div>
+                    <div className="knob"><img src="./images/index/animate-tv-btn.gif" alt="裝飾旋鈕" /></div>
+                    <div className="arrow-btn" onClick={handlePrev}><img className="arrow-btn-l" src="./images/index/button-2.png" alt="" /></div>
+                    <div className="arrow-btn" onClick={handleNext}><img className="arrow-btn-r" src="./images/index/button-1.png" alt="" /></div>
+                    <div className="carousel-dots">
+                        {items.map((_, index) => (
+                            <div
+                                key={index}
+                                className={`dot ${index === slideIndex ? 'active' : ''}`}
+                                onClick={() => handleDotClick(index)}
+                            ></div>
+                        ))}
+
+                    </div>
+                </>
+            )
+        }
+        const items = [
+            {
+                bg: "./images/index/market.webp",
+                title: "南村創意市集－展現你的個人風格！",
+                date: "2024/07/27~2024/07/28"
+            },
+            {
+                bg: "./images/news/winter.webp",
+                title: "歐洲節慶與美食的奇幻之旅",
+                date: "2024/8/1~2024/9/31"
+            },
+            {
+                bg: "./images/news/ai.webp",
+                title: "AI誕生的秘辛",
+                date: "2024/07/27~2024/07/28"
+            }
+        ]
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+
+</html>
